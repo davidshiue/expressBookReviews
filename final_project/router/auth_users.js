@@ -76,9 +76,9 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
     const requestedIsbn = req.params.isbn;
     const username = req.session.authorization.username; // Retrieve username from session
 
-    //if (!username) {
-    //  return res.status(401).json({ message: "Unauthorized" }); // Handle unauthorized access
-    //}
+    if (!username) {
+      return res.status(401).json({ message: "Unauthorized" }); // Handle unauthorized access
+    }
 
     const book = books[requestedIsbn];
 
